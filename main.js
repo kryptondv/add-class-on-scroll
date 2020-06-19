@@ -1,19 +1,24 @@
-// Selects elements
-const selectedElements = document.querySelectorAll('.aclos');
+// Creates function for selecting elements and specyfying name of the class to add
 
-// Calculates selectedElements vertical positions and stores it in new array
-const elPositions = Array.from(selectedElements).map(
-  el => el.getBoundingClientRect().y
-);
+const addElements = (classToSelect, classToAdd, offset) => {
+    const elementData = {
+      [classToSelect]: classToAdd,
+      offset
+    };
+    return elementData;
+};
 
-// Listenes for scroll event
-const aclos = (name) => {
-  window.addEventListener('scroll', () => {
-    let scrollPosition = window.pageYOffset;
-    selectedElements.forEach((el, index) => {
-      if (scrollPosition > elPositions[index]) {
-        el.classList.add(name);
-      }
-    });
-  });
-}
+
+const aclos = () => {
+  const nodeListArr = data.map(entry =>
+    document.querySelectorAll(`.${entry.classToSelect}`)
+  );
+  const positions = nodeListArr.map(list =>
+    Array.from(list).map(el => el.getBoundingClientRect().y)
+  );
+
+  console.log(positions);
+};
+
+
+
