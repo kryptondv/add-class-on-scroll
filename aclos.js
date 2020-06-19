@@ -1,25 +1,29 @@
 const data = [];
 
-// Function for selecting elements and specyfying name of the class to add
+// Adds info about elements to select, class names to add and offset
 
-const addElements = (classToSelect, classToAdd, offset) => {
+const addElements = (classToSelect, classToAdd, offset = 0) => {
   const elementData = {
-    [classToSelect]: classToAdd,
+    classToSelect,
+    classToAdd,
     offset,
   };
-  return elementData;
+  data.push(elementData);
 };
 
-// Function for adding class on scroll
+// Adds class on scroll to elements specified in data array
+
 const aclos = () => {
+  // selects given elements
   const nodeListArr = data.map(entry =>
     document.querySelectorAll(`.${entry.classToSelect}`)
   );
+
+  // calculate elements positions
   const positions = nodeListArr.map(list =>
     Array.from(list).map(el => el.getBoundingClientRect().y)
   );
 
-  console.log(nodeListArr, positions);
   window.addEventListener('scroll', () => {
     let scrollPosition = window.pageYOffset;
     nodeListArr.forEach((list, listIndex) => {
