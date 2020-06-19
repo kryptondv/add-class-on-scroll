@@ -1,3 +1,5 @@
+const data = [];
+
 // Function for selecting elements and specyfying name of the class to add
 
 const addElements = (classToSelect, classToAdd, offset) => {
