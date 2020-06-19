@@ -12,7 +12,7 @@ const aclos = (name) => {
     let scrollPosition = window.pageYOffset;
     selectedElements.forEach((el, index) => {
       if (scrollPosition > elPositions[index]) {
-        el.classList.add('classname');
+        el.classList.add(name);
       }
     });
   });
