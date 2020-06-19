@@ -1,4 +1,4 @@
-// Creates function for selecting elements and specyfying name of the class to add
+// Function for selecting elements and specyfying name of the class to add
 
 const addElements = (classToSelect, classToAdd, offset) => {
     const elementData = {
@@ -8,7 +8,7 @@ const addElements = (classToSelect, classToAdd, offset) => {
     return elementData;
 };
 
-
+// Function for adding class on scroll
 const aclos = () => {
   const nodeListArr = data.map(entry =>
     document.querySelectorAll(`.${entry.classToSelect}`)
@@ -17,7 +17,17 @@ const aclos = () => {
     Array.from(list).map(el => el.getBoundingClientRect().y)
   );
 
-  console.log(positions);
+  console.log(nodeListArr, positions);
+  window.addEventListener('scroll', () => {
+    let scrollPosition = window.pageYOffset;
+    nodeListArr.forEach((list, listIndex) => {
+      list.forEach((element, elementIndex) => {
+        if (scrollPosition + data[listIndex].offset > positions[listIndex][elementIndex]) {
+          element.classList.add(data[listIndex].classToAdd);
+        }
+      });
+    });
+  });
 };
 
 
