@@ -3,11 +3,11 @@ const data = [];
 // Function for selecting elements and specyfying name of the class to add
 
 const addElements = (classToSelect, classToAdd, offset) => {
-    const elementData = {
-      [classToSelect]: classToAdd,
-      offset
-    };
-    return elementData;
+  const elementData = {
+    [classToSelect]: classToAdd,
+    offset,
+  };
+  return elementData;
 };
 
 // Function for adding class on scroll
@@ -24,13 +24,13 @@ const aclos = () => {
     let scrollPosition = window.pageYOffset;
     nodeListArr.forEach((list, listIndex) => {
       list.forEach((element, elementIndex) => {
-        if (scrollPosition + data[listIndex].offset > positions[listIndex][elementIndex]) {
+        if (
+          scrollPosition + data[listIndex].offset >
+          positions[listIndex][elementIndex]
+        ) {
           element.classList.add(data[listIndex].classToAdd);
         }
       });
     });
   });
 };
-
-
-
